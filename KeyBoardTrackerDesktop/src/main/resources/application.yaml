@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: KeyBoardTrackerDesktop
+
+server:
+  port : 8081
