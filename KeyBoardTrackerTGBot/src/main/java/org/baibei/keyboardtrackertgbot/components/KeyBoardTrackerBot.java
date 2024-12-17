@@ -144,6 +144,9 @@ public class KeyBoardTrackerBot extends TelegramLongPollingBot {
 
                 case 2:
                     String input = update.getMessage().getText();
+                    System.out.println(input);
+                    System.out.println(passwordEncoder.encode(input));
+                    System.out.println(userService.getUserPassword(user.getUsername()));
                     if (passwordEncoder.verify(input, userService.getUserPassword(user.getUsername()))) {
                         sendMessage(Long.parseLong(tgId), "Success!");
                         user.setPassword(input);

@@ -2,5 +2,11 @@ spring:
   application:
     name: KeyBoardTrackerDesktop
 
+logging:
+  register-shutdown-hook: false
+
+  level:
+    root: OFF
+
 server:
   port : 8081

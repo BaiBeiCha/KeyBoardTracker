@@ -40,6 +40,7 @@ public class Command {
                 params[i - 1] = args[i];
             }
         }
+
         cmd.setParams(params);
         return cmd;
     }

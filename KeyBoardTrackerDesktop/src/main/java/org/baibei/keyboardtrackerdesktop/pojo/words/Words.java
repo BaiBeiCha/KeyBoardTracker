@@ -34,6 +34,19 @@ public class Words {
 
     public void add(Word word) {
         words.add(word);
+        sort();
+    }
+
+    public void sort() {
+        for (int i = 0; i < words.size(); i++) {
+            for (int j = i + 1; j < words.size(); j++) {
+                if (words.get(i).getWord().compareTo(words.get(j).getWord()) > 0) {
+                    Word temp = words.get(i);
+                    words.set(i, words.get(j));
+                    words.set(j, temp);
+                }
+            }
+        }
     }
 
     public static Words make(ArrayList<Word> words) {
@@ -66,6 +79,14 @@ public class Words {
     }
 
     public String toString() {
-        return words.toString();
+        StringBuilder sb = new StringBuilder();
+        for (Word value : words) {
+            sb.append(" ");
+            sb.append(value);
+            if (value != words.get(words.size() - 1)) {
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 }

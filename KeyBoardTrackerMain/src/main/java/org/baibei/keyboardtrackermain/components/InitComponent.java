@@ -1,6 +1,5 @@
 package org.baibei.keyboardtrackermain.components;
 
-import org.baibei.keyboardtrackermain.passwordencoder.PasswordEncoder;
 import org.baibei.keyboardtrackermain.pojo.keys.Key;
 import org.baibei.keyboardtrackermain.pojo.keys.Keys;
 import org.baibei.keyboardtrackermain.pojo.user.User;
@@ -8,7 +7,6 @@ import org.baibei.keyboardtrackermain.pojo.words.Word;
 import org.baibei.keyboardtrackermain.pojo.words.Words;
 import org.baibei.keyboardtrackermain.repositories.UsersRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,9 +16,6 @@ public class InitComponent implements CommandLineRunner {
 
     public InitComponent(UsersRepository repository) {
         this.repository = repository;
-        User user = repository.findByUsername("myvvot");
-        user.setPassword("admin");
-        repository.save(user);
     }
 
     private int random() {
@@ -57,21 +52,6 @@ public class InitComponent implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        //repository.deleteAll();
-
-        //for (int i = 0; i < random(); i++) {
-        //    repository.save(makeUser());
-        //}
-
-        System.out.println("Users found:");
-        for (User user : repository.findAll()) {
-            System.out.println(user);
-        }
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new PasswordEncoder();
+    public void run(String... args) {
     }
 }

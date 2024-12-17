@@ -114,9 +114,17 @@ public class User {
         return keys.getKeys();
     }
 
+    public Keys getKeysObject() {
+        return keys;
+    }
+
+    public Words getWordsObject() {
+        return words;
+    }
+
     public String toString() {
         return String.format(
-                "User[id=%s, username=%s, keys=%s, words=%s]",
-                id, username, keys.toString(), words.toString());
+                "Username = %s\nKeys:\n%s\n\nWords:\n%s",
+                username, keys.toString(), words.toString());
     }
 }

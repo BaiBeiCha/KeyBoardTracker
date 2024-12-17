@@ -1,6 +1,5 @@
 package org.baibei.keyboardtrackermain.pojo.user;
 
-import org.baibei.keyboardtrackermain.passwordencoder.PasswordEncoder;
 import org.baibei.keyboardtrackermain.pojo.keys.Key;
 import org.baibei.keyboardtrackermain.pojo.keys.Keys;
 import org.baibei.keyboardtrackermain.pojo.words.Word;
@@ -91,8 +90,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        PasswordEncoder passwordEncoder = new PasswordEncoder();
-        this.password = passwordEncoder.encode(password);
+        this.password = password;
     }
 
     public String getPassword() {

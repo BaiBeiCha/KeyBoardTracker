@@ -1,0 +1,2 @@
+time_to_send = 100000
+print_upload = false

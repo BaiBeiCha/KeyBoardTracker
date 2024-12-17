@@ -1,6 +1,7 @@
 package org.baibei.keyboardtrackerdesktop.repositories;
 
 import org.baibei.keyboardtrackerdesktop.pojo.keys.Key;
+import org.baibei.keyboardtrackerdesktop.pojo.console.ConsoleOutput;
 import org.baibei.keyboardtrackerdesktop.pojo.other.RepositoryPath;
 import org.baibei.keyboardtrackerdesktop.pojo.user.User;
 import org.baibei.keyboardtrackerdesktop.pojo.user.UserConvertor;
@@ -50,7 +51,7 @@ public class StandardRepository {
             writer.flush();
         }
         catch(Exception e){
-            e.printStackTrace();
+            ConsoleOutput.error("Can't save user");
         }
     }
 

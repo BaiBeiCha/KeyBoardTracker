@@ -34,7 +34,8 @@ public class RequestService {
                         case POST -> HttpMethod.POST;
                         case PATCH -> HttpMethod.PATCH;
                         case DELETE -> HttpMethod.DELETE;
-            };
+                        case PUT -> HttpMethod.PUT;
+                    };
 
             WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = client.method(httpMethod);
             WebClient.RequestBodySpec bodySpec = uriSpec.uri(url);
@@ -50,6 +51,16 @@ public class RequestService {
 
             Mono<UserResponse> response = headersSpec.retrieve()
                     .bodyToMono(UserResponse.class);
+
+            UserResponse userResponse1 = response.block();
+            System.out.println(userResponse1.getUsername() + "\t" + userResponse1.getPassword());
+
+            User user = new User();
+            assert userResponse1 != null;
+            user.setUsername(userResponse1.getUsername());
+            user.setPasswordS(userResponse1.getPassword());
+            user.setKeys(userResponse1.getKeys());
+            user.setWords(userResponse1.getWords());
 
             return new User(Objects.requireNonNull(response.block()));
         } catch (Exception e) {

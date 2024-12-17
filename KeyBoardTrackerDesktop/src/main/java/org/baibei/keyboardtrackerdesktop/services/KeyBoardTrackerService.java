@@ -5,6 +5,7 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import org.baibei.keyboardtrackerdesktop.pojo.keys.Key;
 import org.baibei.keyboardtrackerdesktop.pojo.keys.KeyConvertor;
+import org.baibei.keyboardtrackerdesktop.pojo.console.ConsoleOutput;
 import org.baibei.keyboardtrackerdesktop.pojo.words.Word;
 import org.baibei.keyboardtrackerdesktop.repositories.StandardRepository;
 import org.springframework.stereotype.Service;
@@ -56,7 +57,8 @@ public class KeyBoardTrackerService implements NativeKeyListener {
         try {
             GlobalScreen.registerNativeHook();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ConsoleOutput.fatal("Can't register native hook");
+            System.exit(1);
             return;
         }
 

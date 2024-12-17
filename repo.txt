@@ -1,0 +1,12 @@
+USER STRUCTURE
+username:myvvot
+password:$2a$10$zgnT3jzPC0tBYQ7l4jvfe.NbAmdoZLYE3WucZh36nG2eSA/Dlrdd6
+key:a=1
+key:c=1
+key:d=1
+key:m=2
+key:n=1
+key:o=1
+key:s=1
+word:commands=1
+END

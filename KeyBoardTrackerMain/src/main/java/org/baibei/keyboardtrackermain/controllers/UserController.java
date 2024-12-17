@@ -52,24 +52,29 @@ public class UserController {
 
     @PostMapping("/api/users")
     public ResponseEntity<UserResponse> newUser(@RequestBody UserResponse userResponse) {
-        usersRepository.save(new User(userResponse));
+        User user = new User();
+        user.setUsername(userResponse.getUsername());
+        user.setPassword(userResponse.getPassword());
+        user.setKeys(userResponse.getKeys());
+        user.setWords(userResponse.getWords());
+        usersRepository.save(user);
 
-        System.out.println("POST -> " + userResponse.toString());
+        System.out.println("POST -> " + user.getUsername());
         return ResponseEntity.ok(userResponse);
     }
 
     @PatchMapping("/api/users/{username}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable("username") String username,
                                                    @RequestBody UserResponse userResponse) {
+        System.out.println(userResponse.getUsername() + "\t" + userResponse.getPassword());
+
         User user = usersRepository.findByUsername(username);
         if (user == null) {
             return newUser(userResponse);
         }
 
         if (userResponse.getPassword() != null) {
-            UserResponse newInfo = new UserResponse(user);
-            newInfo.setPassword(userResponse.getPassword());
-            user = new User(newInfo);
+            user.setPassword(userResponse.getPassword());
         }
         if (userResponse.getUsername() != null) {
             user.setUsername(userResponse.getUsername());
@@ -82,7 +87,7 @@ public class UserController {
         }
 
         userService.update(user);
-        System.out.println("PATCH -> " + userResponse.toString());
+        System.out.println("PATCH -> " + user.getUsername());
         return ResponseEntity.ok(new UserResponse(user));
     }
 

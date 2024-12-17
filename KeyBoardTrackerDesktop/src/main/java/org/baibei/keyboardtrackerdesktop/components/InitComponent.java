@@ -9,6 +9,6 @@ public class InitComponent {
 
     @Bean
     public RepositoryPath getRepositoryPath() {
-        return new RepositoryPath("D:\\repo.txt");
+        return new RepositoryPath("repo.txt");
     }
 }

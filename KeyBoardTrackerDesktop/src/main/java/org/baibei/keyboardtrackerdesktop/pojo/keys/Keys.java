@@ -28,6 +28,19 @@ public class Keys {
 
     public void add(Key key) {
         keys.add(key);
+        sort();
+    }
+
+    public void sort() {
+        for (int i = 0; i < keys.size(); i++) {
+            for (int j = i + 1; j < keys.size(); j++) {
+                if (keys.get(i).getCharacter() > keys.get(j).getCharacter()) {
+                    Key key = keys.get(i);
+                    keys.set(i, keys.get(j));
+                    keys.set(j, key);
+                }
+            }
+        }
     }
 
     public static Keys make(ArrayList<Key> keys) {
@@ -60,6 +73,14 @@ public class Keys {
     }
 
     public String toString() {
-        return keys.toString();
+        StringBuilder sb = new StringBuilder();
+        for (Key value : keys) {
+            sb.append(" ");
+            sb.append(value);
+            if (value != keys.get(keys.size() - 1)) {
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 }

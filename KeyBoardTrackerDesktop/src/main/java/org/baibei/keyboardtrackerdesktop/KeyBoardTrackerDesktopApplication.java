@@ -21,7 +21,7 @@ public class KeyBoardTrackerDesktopApplication {
         while (true) {
             String command = scanner.nextLine();
             if (command.trim().equals("exit")) {
-                break;
+                System.exit(0);
             } else {
                 ConsoleControlService.handle(command);
             }
